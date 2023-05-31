@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Le pizze</h1>
+	<a th:href="@{/pizzas/create}">Create new Pizza</a>
+	<form action="@{/pizzas/search}" method="POST">
+		<label>Nome Pizza</label>
+		<input type="text" name="search" th:value="${search}">
+		<br>
+		<input type="submit" value="search">
+	
+	</form>
+	<ul th:if="${pizzas}">
+  <li
+  
+  	th:each="pizza : ${pizzas}";
+  	th:object="${pizza}"
+  > 
+  	<img width="200px" height="150px" th:src="*{url}">
+  	
+  	<div class="pizza-name">
+  		<a th:href="@{/pizzas/{id} (id=*{id})}">
+  			  [[*{name}]]	
+  		</a>
+  		
+  		<a th:href="@{/pizzas/delete{id} (id=*{id})}">DEL</a>
+  		-
+  		<a th:href="@{/pizzas/update{id} (id=*{id})}">UPD</a>
+  		
+  	</div>
+  	
+  	<div class="pizza-description">[[*{description}]]</div>
+  	<div class="pizza-price">[[*{price}]]</div>
+
+  </li>
+</ul>
+
+</body>
+</html>
