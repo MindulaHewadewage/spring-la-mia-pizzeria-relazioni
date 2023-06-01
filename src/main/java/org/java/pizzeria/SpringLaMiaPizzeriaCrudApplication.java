@@ -1,8 +1,11 @@
 package org.java.pizzeria;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import org.java.pizzeria.pojo.Offer;
 import org.java.pizzeria.pojo.Pizza;
+import org.java.pizzeria.serv.OfferService;
 import org.java.pizzeria.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +16,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 	
 	@Autowired
-	private PizzaService pizzaService;
+	private PizzaService pizzaService; 
+	
+	@Autowired
+	private OfferService offerService; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
@@ -36,9 +42,21 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		pizzaService.save(p5);
 		pizzaService.save(p6);
 		
+		Offer of1=new Offer(LocalDate.parse("2023-06-10"),LocalDate.parse("2023-06-20"), "Special Promo 20%", 20, p1);
+		Offer of2=new Offer(LocalDate.parse("2023-06-20"),LocalDate.parse("2023-06-30"), "Special Promo 30%", 30, p2);
+		Offer of3=new Offer(LocalDate.parse("2023-06-05"),LocalDate.parse("2023-06-10"), "Special Promo 40%", 40, p3);
+		Offer of4=new Offer(LocalDate.parse("2023-07-10"),LocalDate.parse("2023-07-20"), "Special Promo 50%", 50, p4);
+		Offer of5=new Offer(LocalDate.parse("2023-08-10"),LocalDate.parse("2023-08-20"), "Special Promo 40%", 40, p5);
+		Offer of6=new Offer(LocalDate.parse("2023-09-10"),LocalDate.parse("2023-09-20"), "Special Promo 30%", 30, p6);
 		
-		List<Pizza> pizzas=pizzaService.findAll();
-		System.out.println(pizzas);
+		offerService.save(of1);
+		offerService.save(of2);
+		offerService.save(of3);
+		offerService.save(of4);
+		offerService.save(of5);
+		offerService.save(of6);
+
+		
 	}
 
 }

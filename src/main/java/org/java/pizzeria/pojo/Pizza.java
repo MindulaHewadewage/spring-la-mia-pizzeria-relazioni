@@ -1,10 +1,13 @@
 package org.java.pizzeria.pojo;
 
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -17,6 +20,9 @@ public class Pizza {
 	private String description;
 	private String url;
 	private int price;
+	
+	@OneToMany(mappedBy = "pizza")
+	private List<Offer>offer;
 	
 	public Pizza() {}
 
@@ -67,6 +73,14 @@ public class Pizza {
 		this.price = price;
 	}
 	
+	public List<Offer> getOffer() {
+		return offer;
+	}
+
+	public void setOffer(List<Offer> offer) {
+		this.offer = offer;
+	}
+
 	@Override
 	public String toString() {
 		return "["+getId()+"]"+ getName()

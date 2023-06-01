@@ -7,6 +7,7 @@
 <body>
 	<h1>Le pizze</h1>
 	<a th:href="@{/pizzas/create}">Create new Pizza</a>
+		<a th:href="@{/offers/create}">Create new Offer</a>
 	<form action="@{/pizzas/search}" method="POST">
 		<label>Nome Pizza</label>
 		<input type="text" name="search" th:value="${search}">

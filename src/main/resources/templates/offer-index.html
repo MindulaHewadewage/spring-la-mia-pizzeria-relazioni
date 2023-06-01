@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Le offerte</h1>
+	<a th:href="@{/offers/create}">Create new Offer</a>
+
+	<ul>
+  <li
+  
+  	th:each="offer : ${offers}";
+  	th:object="${offer}"
+  > 
+  [[*{pizza.name}]] - [[*{title}]] - [[*{discountPerc}]]
+  <br>
+  [[*{startDate}]] - [[*{finishDate}]]
+
+
+  </li>
+</ul>
+
+</body>
+</html>
